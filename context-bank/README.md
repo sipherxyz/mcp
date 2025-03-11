@@ -20,12 +20,23 @@ Context Bank MCP is a project using the Model Context Protocol (MCP) to create a
 
 ## Installation
 
+### Local Installation
+
 ```bash
 # Install dependencies
 npm install
 
 # Compile source code
 npm run build
+```
+
+### Direct Installation from GitHub
+
+You can run this package directly from GitHub without local installation:
+
+```bash
+# Run with environment variables
+env ONYX_API_BASE=http://your-api-url ONYX_API_KEY=your-api-key npx -y https://github.com/sipherxyz/mcp --force
 ```
 
 ## Configuration
@@ -59,10 +70,6 @@ cp .env.example .env
 ONYX_API_KEY=your_api_key_here
 ONYX_API_BASE=http://your_api_base_url:port
 
-# Server Configuration
-PORT=3000
-NODE_ENV=development
-
 # Optional: Logging Configuration
 LOG_LEVEL=info
 ```
@@ -70,24 +77,40 @@ LOG_LEVEL=info
 ### Environment Variables
 
 1. Required Environment Variables:
-   - `ONYX_API_KEY`: Your AtherOS API key
-   - `ONYX_API_BASE`: Base URL for the AtherOS API (e.g., "http://172.30.22.52:3000")
+   - `ONYX_API_BASE`: Base URL for the AtherOS API (e.g., "http://localhost:3000")
+   - `ONYX_API_KEY`: Your AtherOS API key (if required by your API endpoint)
 
 2. Optional Environment Variables:
-   - `PORT`: Port number for the server (default: 3000)
-   - `NODE_ENV`: Environment mode (development, production, test)
-   - `LOG_LEVEL`: Logging level (info, debug, error, warn)
+   - `LOG_LEVEL`: Logging level (info, debug, error) - defaults to "info"
 
 ## Usage
 
-After compilation, you can use the command line tool:
+After compilation, you can use the command line tool in several ways:
+
+### Local Usage After Installation
 
 ```bash
 # Direct usage
 ./build/index.js
 
-# Or through npm
+# Or through npm script
 npm start
+```
+
+### Usage from Monorepo Root
+
+```bash
+# Using npx
+npx mcp-context-bank
+
+# Or using npm script (if defined)
+npm run context-bank
+```
+
+### Direct Usage from GitHub
+
+```bash
+env ONYX_API_BASE=http://your-api-url ONYX_API_KEY=your-api-key npx -y https://github.com/sipherxyz/mcp --force
 ```
 
 ## API Tools
@@ -140,4 +163,4 @@ npm run dev
 
 ## License
 
-ISC
+MIT
