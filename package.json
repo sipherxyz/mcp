@@ -1,0 +1,26 @@
+{
+    "name": "mcp-monorepo",
+    "version": "1.0.0",
+    "description": "Model Context Protocol Monorepo",
+    "private": true,
+    "workspaces": [
+        "context-bank"
+    ],
+    "scripts": {
+        "build": "npm run build --workspaces",
+        "build:context-bank": "npm run build --workspace=context-bank"
+    },
+    "bin": {
+        "mcp-context-bank": "./context-bank/build/index.js"
+    },
+    "keywords": [
+        "MCP",
+        "AI",
+        "monorepo"
+    ],
+    "author": "vu.le",
+    "license": "MIT",
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}
