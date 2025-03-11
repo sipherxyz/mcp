@@ -1,0 +1,32 @@
+{
+  "name": "context-bank",
+  "version": "1.0.5",
+  "description": "Context Bank MCP",
+  "license": "MIT",
+  "author": "vu.le",
+  "homepage": "https://sipheragi.com",
+  "type": "module",
+  "bin": {
+    "mcp-server-context-bank": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && shx chmod +x build/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "files": [
+    "build"
+  ],
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "^3.5.3",
+    "shx": "^0.3.4",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.0",
+    "axios": "^1.8.1",
+    "dotenv": "^16.4.7"
+  }
+}
