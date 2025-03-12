@@ -1,14 +1,11 @@
 {
   "name": "context-bank",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Context Bank MCP",
   "license": "MIT",
   "author": "vu.le",
   "homepage": "https://sipheragi.com",
   "type": "module",
-  "bin": {
-    "mcp-server-context-bank": "./build/index.js"
-  },
   "scripts": {
     "build": "tsc && shx chmod +x build/*.js",
     "prepare": "npm run build",

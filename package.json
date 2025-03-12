@@ -1,6 +1,6 @@
 {
     "name": "mcp-monorepo",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Model Context Protocol Monorepo",
     "private": true,
     "workspaces": [
@@ -11,7 +11,7 @@
         "build:context-bank": "npm run build --workspace=context-bank"
     },
     "bin": {
-        "mcp-context-bank": "./context-bank/build/index.js"
+        "mcp-context-bank": "./context-bank/build/test.js"
     },
     "keywords": [
         "MCP",
