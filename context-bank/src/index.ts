@@ -12,6 +12,7 @@ dotenv.config();
 // Use environment variables with fallback values
 const ONYX_API_BASE = process.env.ONYX_API_BASE || "";
 const LOG_LEVEL = process.env.LOG_LEVEL || "info";
+const ONYX_API_KEY = process.env.ONYX_API_KEY || "";
 
 // Configure logging based on LOG_LEVEL
 const logger = {
@@ -81,6 +82,7 @@ async function makeOnyxRequest<T>(
 ): Promise<T | null> {
   const headers = {
     "Content-Type": "application/json",
+    "X-Onyx-Authorization": `Bearer ${ONYX_API_KEY}`,
   };
   try {
     const response = await axios.post(url, body, { headers });
