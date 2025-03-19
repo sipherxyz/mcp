@@ -40,6 +40,23 @@ async function callChatAPI() {
         console.log(error);
     }
 }
+async function makeOnyxRequest(url, body) {
+    const headers = {
+        "Content-Type": "application/json",
+        "X-Onyx-Authorization": `Bearer ${process.env.ONYX_API_KEY}`,
+    };
+    try {
+        const response = await axios.post(url, body, { headers });
+        if (!response.data) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.data;
+    }
+    catch (error) {
+        console.error("Error making Onyx request:", error);
+        return null;
+    }
+}
 async function makeOnyxRequestStream(url, body) {
     const headers = {
         "Content-Type": "application/json",
@@ -95,8 +112,47 @@ async function test() {
     const res = (await makeOnyxRequestStream(`${process.env.ONYX_API_BASE}/api/chat/send-message`, body));
     return res?.message;
 }
+async function test2({ message }) {
+    const searchUrl = `${process.env.ONYX_API_BASE}/api/chat/document-search`;
+    const body = {
+        message: message,
+        search_type: "semantic",
+        retrieval_options: {
+            enable_auto_detect_filters: false,
+            offset: 0,
+            limit: 3,
+            dedupe_docs: true,
+        },
+        evaluation_type: "skip",
+        chunks_above: 1,
+        chunks_below: 1,
+        full_doc: false,
+    };
+    const documentSearchResponse = await makeOnyxRequest(searchUrl, body);
+    if (!documentSearchResponse) {
+        return {
+            content: [
+                {
+                    type: "text",
+                    text: `Failed to search for documents in the AtherOS's knowledge base`,
+                },
+            ],
+        };
+    }
+    return {
+        content: documentSearchResponse?.top_documents?.map((doc) => ({
+            type: "text",
+            text: doc.content + "\n" + doc.link,
+        })) ?? [
+            {
+                type: "text",
+                text: `No documents found in the AtherOS's knowledge base`,
+            },
+        ],
+    };
+}
 // Call the function
-test()
+test2({ message: "Thông tin Sipher" })
     .then((data) => {
     console.log(data);
 })
