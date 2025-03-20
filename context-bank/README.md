@@ -6,8 +6,7 @@ Context Bank MCP is a project using the Model Context Protocol (MCP) to create a
 
 ## Features
 
-- Create new chat sessions to query the knowledge base
-- Send messages to chat sessions to receive responses from the knowledge base
+- Query the knowledge base in AtherOS
 - Format and display results from the Onyx API
 
 ## Technologies Used
@@ -186,4 +185,4 @@ The search is optimized with:
 
 ## License
 
-MIT
+MIT License
