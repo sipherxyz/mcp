@@ -11,7 +11,8 @@
         "build:context-bank": "npm run build --workspace=context-bank"
     },
     "bin": {
-        "mcp-context-bank": "./context-bank/build/index.js"
+        "mcp-context-bank": "./context-bank/build/index.js",
+        "test": "./context-bank/build/test.js"
     },
     "keywords": [
         "MCP",
