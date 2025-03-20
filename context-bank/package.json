@@ -6,6 +6,9 @@
   "author": "vu.le",
   "homepage": "https://sipheragi.com",
   "type": "module",
+  "bin": {
+    "mcp-context-bank": "./build/index.js"
+  },
   "scripts": {
     "build": "tsc && shx chmod +x build/*.js",
     "prepare": "npm run build",
