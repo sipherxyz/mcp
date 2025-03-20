@@ -4,11 +4,13 @@
     "description": "Model Context Protocol Monorepo",
     "private": true,
     "workspaces": [
-        "context-bank"
+        "context-bank",
+        "UnrealMCP"
     ],
     "scripts": {
         "build": "npm run build --workspaces",
-        "build:context-bank": "npm run build --workspace=context-bank"
+        "build:context-bank": "npm run build --workspace=context-bank",
+        "build:unreal-mcp": "npm run build --workspace=UnrealMCP"
     },
     "bin": {
         "mcp-context-bank": "./context-bank/build/index.js"
