@@ -164,3 +164,7 @@ npm run dev
 ## License
 
 MIT
+
+
+
+# Install mcp 
