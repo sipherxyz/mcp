@@ -115,35 +115,33 @@ env ONYX_API_BASE=http://your-api-url ONYX_API_KEY=your-api-key npx -y https://g
 
 ## API Tools
 
-The project provides two main MCP tools:
+The project provides one main MCP tool:
 
-### 1. create_chat_session
+### document-search
 
-Creates a new chat session to query the knowledge base.
-
-Parameters:
-- `persona_id` (default: 0): User ID
-- `description` (default: ""): Chat session description
-
-### 2. query_atheros
-
-Sends a message to the chat session to query the AtherOS knowledge base.
+Searches for documents in the AtherOS knowledge base.
 
 Parameters:
-- `chat_session_id`: Chat session ID
-- `message`: Message content
-- `parent_message_id`: Parent message ID (can be null)
+- `message`: The search query string to find relevant documents
+
+The search is performed with the following default settings:
+- Search type: semantic
+- Result limit: 3 documents
+- Deduplication: enabled
+- Context: 1 chunk above and below the matching content
 
 ## Response Format
 
 Responses from knowledge base queries include:
-- Message ID
-- Message content
-- Rephrased query (if available)
-- Information about top source documents (if available):
-  - Document name
+- Document content
+- Document link
+- Additional metadata (when available):
+  - Document ID
+  - Semantic identifier
+  - Source type
   - Relevance score
-  - Link to the document
+  - Match highlights
+  - Update timestamp
 
 ## Architecture
 
@@ -161,10 +159,31 @@ npm run build
 npm run dev
 ```
 
+## Querying Methods in MCP
+
+There are two main ways to query the AtherOS knowledge base through MCP:
+
+### 1. Direct Document Search
+```bash
+query AtherOS "your search query here"
+```
+This method directly searches the AtherOS knowledge base for relevant documents matching your query. The search uses semantic matching to find the most relevant content.
+
+### 2. Context Bank Command
+```bash
+use context bank search "your search query here"
+```
+This is an alternative syntax that performs the same document search operation. Both methods will return:
+- Relevant document content
+- Links to the source documents
+- Additional metadata about the matches
+
+The search is optimized with:
+- Semantic search capabilities
+- Document deduplication
+- Contextual chunks (1 above and below matches)
+- Top 3 most relevant results
+
 ## License
 
 MIT
-
-
-
-# Install mcp 
