@@ -116,13 +116,13 @@ server.tool(
       retrieval_options: {
         enable_auto_detect_filters: false,
         offset: 0,
-        limit: 3,
+        limit: 10,
         dedupe_docs: true,
       },
       evaluation_type: "skip",
-      chunks_above: 1,
-      chunks_below: 1,
-      full_doc: false,
+      chunks_above: 5,
+      chunks_below: 10,
+      full_doc: true,
     };
     const documentSearchResponse =
       await makeOnyxRequest<DocumentSearchResponse>(searchUrl, body);
